@@ -1,4 +1,9 @@
+IMAGE ?= christopherhein/workshopper:latest
+
+.PHONY: build
 build:
-	docker build -t osevg/workshopper:latest .
+	docker build -t ${IMAGE} .
+
+.PHONY: release
 release: build
-	docker push osevg/workshopper:latest
+	docker push ${IMAGE}
