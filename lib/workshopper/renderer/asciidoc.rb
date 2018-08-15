@@ -1,4 +1,5 @@
 require 'asciidoctor'
+# require 'workshopper/extensions/emoji-inline-macros'
 
 module Workshopper
   module Renderer
@@ -14,6 +15,13 @@ module Workshopper
       end
 
       def render(content, env)
+        # Asciidoctor::Extensions.register do |document|
+        #   inline_macro EmojiInlineMacro
+        #   docinfo_processor EmojiAssetsDocinfoProcessor
+        #   # block_macro Asciidoctor::GistBlockMacro if document.basebackend? 'html'
+        #   # include_processor Asciidoctor::UriIncludeProcessor
+        # end
+        #
         content = @templates.render(content, env)
         content = Asciidoctor::Document.new(content, attributes: {
             'icons' => 'font',
